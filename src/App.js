@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import CreateForm from './pages/CreateForm';
 
 function App() {
+  const history = useHistory()
+  const userId = useSelector(state => state.user.userId);
+
+  useEffect(() => {
+    if (!userId) {
+      history.push('/login');
+    }
+  }, [userId]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        {userId?
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/create/form" component={CreateForm} />
+            </Switch>
+            :
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
+            </Switch>
+        }
+      </div>
   );
 }
 
