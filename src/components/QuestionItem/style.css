@@ -1,0 +1,15 @@
+.question-container{
+    background: #61dafb;
+    height: 130px;
+    margin: 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+.question-header{
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.question-input {
+
+}

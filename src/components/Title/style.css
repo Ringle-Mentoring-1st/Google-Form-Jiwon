@@ -1,0 +1,12 @@
+.form-title-container {
+    background: #61dafb;
+    height: 130px;
+    margin: 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-title-container .title{
+    height: 40px;
+    font-size: 2rem;
+}
